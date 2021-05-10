@@ -23,26 +23,27 @@ const Header = () => {
 
                             <Picker
                             selectedValue={city}
-                            style={{height:50,width:160}}
+                            style={styles.pickerStyle}
                              onValueChange={(itemValue,itemIndex)=>
                                  changeCity(itemValue)        
                              }
                             >
-                                    <Picker.Item
-                                    label="Fort-de-France"
-                                    value="Fort-de-France"
-                                    style={{fontWeight:"bold"}}
-                                    />
-                                    <Picker.Item
-                                    label="Lamentin"
-                                    value="Lamentin"
-                                    style={{fontWeight:"bold"}}
-                                    />
-                                    <Picker.Item
-                                    label="Schoelcher"
-                                    value="Schoelcher"
-                                    style={{fontWeight:"bold"}}
-                                    />
+
+                                <Picker.Item
+                                label="Fort-de-France"
+                                value="Fort-de-France"
+                                style={styles.pickerItemStyle}
+                                />
+                                <Picker.Item
+                                label="Lamentin"
+                                value="Lamentin"
+                                style={styles.pickerItemStyle}
+                                />
+                                <Picker.Item
+                                label="Schoelcher"
+                                value="Schoelcher"
+                                style={styles.pickerItemStyle}
+                                />
 
                             </Picker>
 

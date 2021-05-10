@@ -19,5 +19,12 @@ export const styles = StyleSheet.create({
     },
     right:{
         width:"10%"
+    },
+    pickerStyle:{
+        height:50,
+        width:160
+    },
+    pickerItemStyle:{
+        fontWeight:"bold"
     }
 })
