@@ -1,16 +1,35 @@
-import React,{useContext} from 'react'
+import React,{useContext,useEffect,useState} from 'react'
 import {View,Text,StyleSheet,Image } from 'react-native'
 import {styles} from './style'
 import {FirebaseContext} from '../../providers'
 import {ScrollView} from 'react-native-gesture-handler';
+import firestore from '@react-native-firebase/firestore';
 
 
 const Menu = () => {
 
-    // const userDocument = firestore()
-    //                     .collection('menu');
+    const [menuLists,setMenu] = useState([])
+    
+    const {getMenu} = useContext(FirebaseContext)
 
-    // console.log(userDocument)
+     useEffect(() =>{
+         const menuSubscriber = getMenu()
+         .onSnapshot(dataSnapShot=>{
+
+             const menuData = [] ;
+            
+             dataSnapShot.forEach(data=>{
+                 menuData.push({id:data.id,...data.data()})
+                 console.log(" menu data : ",data.data())
+                
+            })
+             setMenu(menuData)
+             console.log(" datasnapshot : ",menuLists)
+
+         })
+
+             return () => menuSubscriber()        
+     },[])
 
     return (
         <View style={styles.viewMenu}>
@@ -25,16 +44,11 @@ const Menu = () => {
                 style={styles.scrollViewStyle}
                 >
 
-                    <View style={styles.viewScrollMenu1}>
+                   { menuLists && menuLists.map((data) =>  <View style={styles.viewScrollMenu1} key={data.id}>
 
-                        {/* <Image
-                        source={require('../../App/assets/images/5.png')}
-                        style={styles.imageMenuStyle}
-                        /> */}
+                        <Text style={styles.textMenuScrollView}>{data.name}</Text>
 
-                        <Text style={styles.textMenuScrollView}>Burgers</Text>
-
-                    </View>
+                    </View>)}
                                 
                 </ScrollView>
 

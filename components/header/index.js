@@ -14,8 +14,8 @@ const Header = () => {
                 <View style={styles.imageLeft}>
 
                     <Image
-                        source={require('../../App/assets/images/1.png')}
-                    />
+                            source={require('../../App/assets/images/1.png')}
+                            />
 
                 </View>
 

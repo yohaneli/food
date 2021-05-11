@@ -2,7 +2,7 @@ import React from 'react';
 import {View,Text,Image,TouchableOpacity, Touchable} from 'react-native';
 import {styles} from './style'
 
-const Product = () => {
+const Product = ({image,title,description,price}) => {
     return (
         <TouchableOpacity
         style={styles.styleTouch}
@@ -15,19 +15,27 @@ const Product = () => {
                         />
 
                             <Text style={styles.caloryStyle}>
-                                300 calories
+                                
+                               {`${price} €`}
+                               
                             </Text>
 
                     </View>
 
                             <Image
-                            source={require('../../App/assets/images/4.png')}
+                            source={{uri:image}}
                             style={{height:100,width:80}}
                             />
 
                             <Text style={styles.thirdText}>
                                 An tcho Viande
                             </Text>
+
+                            <Text style={styles.thirdText}>
+                                {title}
+                                {description}
+                            </Text>
+
 
         </TouchableOpacity>
     )

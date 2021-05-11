@@ -7,8 +7,17 @@ class Firebase {
 
     constructor(){
         this.auth = auth;
-        this.firestore = firestore();
+        this.firestore = firestore;
     }
+
+    getMenu = () => firestore()
+                    .collection("menu")
+                    .orderBy("position","asc");
+    
+    getDataSort = (collection,champ,sens) => firestore()
+                    .collection(collection)
+                    .orderBy(champ,sens);
+                    
 }
 
 export default Firebase
