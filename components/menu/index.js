@@ -4,15 +4,29 @@ import {styles} from './style'
 import {FirebaseContext} from '../../providers'
 import {ScrollView} from 'react-native-gesture-handler';
 import firestore from '@react-native-firebase/firestore';
+import { ActivityIndicator } from 'react-native';
 
+
+const MenuTitle = ({data}) => {
+    return (
+    <View style={styles.viewScrollMenu1} >
+
+        <Text style={styles.textMenuScrollView}>{data.name}</Text>
+
+    </View>
+    )
+}
 
 const Menu = () => {
 
     const [menuLists,setMenu] = useState([])
+
+    const [isLoading,setIsLoading] = useState(false)
     
     const {getMenu} = useContext(FirebaseContext)
 
      useEffect(() =>{
+         setIsLoading(true)
          const menuSubscriber = getMenu()
          .onSnapshot(dataSnapShot=>{
 
@@ -24,6 +38,7 @@ const Menu = () => {
                 
             })
              setMenu(menuData)
+             setTimeout(() => setIsLoading(false),3000)
              console.log(" datasnapshot : ",menuLists)
 
          })
@@ -44,11 +59,9 @@ const Menu = () => {
                 style={styles.scrollViewStyle}
                 >
 
-                   { menuLists && menuLists.map((data) =>  <View style={styles.viewScrollMenu1} key={data.id}>
-
-                        <Text style={styles.textMenuScrollView}>{data.name}</Text>
-
-                    </View>)}
+                   { (menuLists.length > 0 && !isLoading) ? menuLists.map((data) =>  
+                    <MenuTitle data={data} key={data.id}/>
+                   ):<View style={{marginHorizontal:150}}><ActivityIndicator size="small" color="green"/></View>}
                                 
                 </ScrollView>
 

@@ -17,6 +17,8 @@ class Firebase {
     getDataSort = (collection,champ,sens) => firestore()
                     .collection(collection)
                     .orderBy(champ,sens);
+    
+    collectionAddProduit = (data) => firestore().collection("produits").add(data)
                     
 }
 

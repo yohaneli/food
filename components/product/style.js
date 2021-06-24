@@ -7,13 +7,14 @@ export const styles = StyleSheet.create({
         height:280,
         width:160,
         borderRadius:20,
-        marginRight:10
+        marginRight:10,
+        marginBottom:20
     },
     firstView:{
         flexDirection:"row",
         alignItems:"center",
         alignSelf:"center",
-        marginTop:20
+        marginTop:20,
     },
     caloryStyle:{
         paddingHorizontal:10,

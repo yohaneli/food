@@ -24,7 +24,7 @@ const Product = ({image,title,description,price}) => {
 
                             <Image
                             source={{uri:image}}
-                            style={{height:100,width:80}}
+                            style={{height:120,width:145}}
                             />
 
                             <Text style={styles.thirdText}>
